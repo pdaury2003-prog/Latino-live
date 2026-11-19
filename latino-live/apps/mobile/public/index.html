@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="%LANG_ISO_CODE%">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A0908" />
+    <meta name="color-scheme" content="dark" />
+    <title>%WEB_TITLE%</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #0a0908;
+        color-scheme: dark;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /*
+        The window before the app starts. A phone on a slow connection spends a
+        while downloading the app, and an empty white page looks broken: this
+        shows the brand at once. It is a sibling of the root, so the first real
+        screen covers it, and it steps aside as soon as that root has content.
+      */
+      #root:not(:empty) ~ #boot {
+        display: none;
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at 50% 38%, #2a1b10 0%, #0a0908 62%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      #boot div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      #boot strong {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #f5efe6;
+      }
+      #boot span {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #b3a897;
+      }
+      #boot i {
+        width: 26px;
+        height: 26px;
+        margin-top: 14px;
+        border-radius: 50%;
+        border: 2px solid rgba(232, 194, 126, 0.25);
+        border-top-color: #e8c27e;
+        animation: boot-spin 0.9s linear infinite;
+      }
+      @keyframes boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #boot i {
+          animation-duration: 2.4s;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      Activa JavaScript para abrir Latino Live.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+    <div id="boot" aria-hidden="true">
+      <div>
+        <strong>LATINO LIVE</strong>
+        <span>Salas de voz en vivo</span>
+        <i></i>
+      </div>
+    </div>
+  </body>
+</html>

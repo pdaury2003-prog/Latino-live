@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply plugin: 'expo-module-gradle-plugin'
+
+group = 'ai.exaspark.app'
+version = '1.0.0'
+
+android {
+  namespace "ai.exaspark.app"
+
+  defaultConfig {
+    versionCode 1
+    versionName "1.0.0"
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  implementation "androidx.core:core:1.17.0"
+}

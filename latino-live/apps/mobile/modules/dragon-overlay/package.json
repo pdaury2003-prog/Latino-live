@@ -1,0 +1,12 @@
+{
+  "name": "dragon-overlay",
+  "version": "1.0.0",
+  "description": "The room's dragon drawn above the seats on Android.",
+  "main": "index.ts",
+  "private": true,
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

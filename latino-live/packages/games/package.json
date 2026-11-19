@@ -1,0 +1,13 @@
+{
+  "name": "@latino/games",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Motor de reglas de Latino Live: mesas de salón y casino privado.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.ts"
+  }
+}

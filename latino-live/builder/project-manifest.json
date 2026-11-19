@@ -1,0 +1,1 @@
+{"format":"spk.project-manifest.v2","sourceKind":"generated","database":{"migrationsDir":"supabase/migrations"},"deploy":{"target":"web"}}

@@ -1,0 +1,260 @@
+/* The room's own motion: the sixteen sticker animations and the ranking
+   frames that play in the browser. Everything is sized from --s, the sticker's
+   width, so one component works in the tray and across the room. */
+
+.stk {
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 9999px;
+  flex: 0 0 auto;
+  isolation: isolate;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--stk-deep) 55%, transparent);
+}
+.stk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(150deg, var(--stk-light), var(--stk-deep));
+  z-index: -2;
+}
+.stk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: calc(var(--s) * 0.028) solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 calc(var(--s) * 0.1) rgba(255, 244, 220, 0.3);
+  z-index: 3;
+  pointer-events: none;
+}
+.stk-body,
+.stk-props {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.stk-body {
+  z-index: 1;
+  transform-origin: 50% 78%;
+}
+.stk-body img {
+  position: absolute;
+  left: 0;
+  top: 4%;
+  width: 100%;
+  height: 94%;
+  object-fit: contain;
+}
+.stk-props {
+  z-index: 2;
+  font-size: calc(var(--s) * 0.2);
+  line-height: 1;
+}
+
+.stk-emoji {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-size: var(--e, calc(var(--s) * 0.22));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* ---- Idle: breathing, one slow sparkle ---- */
+@keyframes stk-idle { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-2%) scale(1.035); } }
+@keyframes stk-sparkle { 0%, 55%, 100% { opacity: 0; transform: scale(0.6); } 25% { opacity: 0.95; transform: scale(1.1); } }
+.sa-idle .stk-body { animation: stk-idle 2.8s ease-in-out infinite; }
+.sa-idle .stk-emoji { animation: stk-sparkle 2.8s ease-in-out infinite; }
+
+/* ---- Kisses: lean to their side, one kiss flying that way ---- */
+@keyframes stk-lean-left { 0%, 100% { transform: rotate(0) translateX(0); } 45% { transform: rotate(-11deg) translateX(-4%); } }
+@keyframes stk-lean-right { 0%, 100% { transform: rotate(0) translateX(0); } 45% { transform: rotate(11deg) translateX(4%); } }
+@keyframes stk-kiss-left { 0% { opacity: 0; transform: translate(0, 0) scale(0.6) rotate(0); } 25% { opacity: 1; } 85%, 100% { opacity: 0; transform: translate(-45%, -18%) scale(1.15) rotate(-18deg); } }
+@keyframes stk-kiss-right { 0% { opacity: 0; transform: translate(0, 0) scale(0.6) rotate(0); } 25% { opacity: 1; } 85%, 100% { opacity: 0; transform: translate(45%, -18%) scale(1.15) rotate(18deg); } }
+@keyframes stk-heart-up { 0% { opacity: 0; transform: translateY(8%) scale(0.5); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-45%) scale(0.9); } }
+.sa-beso-izquierda .stk-body { animation: stk-lean-left 2.2s ease-in-out infinite; }
+.sa-beso-derecha .stk-body { animation: stk-lean-right 2.2s ease-in-out infinite; }
+.sa-beso-izquierda .p-kiss { animation: stk-kiss-left 2.2s ease-out infinite; }
+.sa-beso-derecha .p-kiss { animation: stk-kiss-right 2.2s ease-out infinite; }
+.sa-beso-izquierda .p-heart, .sa-beso-derecha .p-heart { animation: stk-heart-up 2.2s ease-out infinite; }
+.sa-beso-izquierda .p-heart:nth-of-type(2), .sa-beso-derecha .p-heart:nth-of-type(2) { animation-delay: 0.4s; }
+
+/* ---- Applause: two hands meeting, twice per loop ---- */
+@keyframes stk-clap-left { 0%, 100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(18%) rotate(14deg); } 50% { transform: translateX(0) rotate(0); } 75% { transform: translateX(18%) rotate(14deg); } }
+@keyframes stk-clap-right { 0%, 100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(-18%) rotate(-14deg); } 50% { transform: translateX(0) rotate(0); } 75% { transform: translateX(-18%) rotate(-14deg); } }
+@keyframes stk-bob { 0%, 50%, 100% { transform: translateY(0) scale(1); } 25%, 75% { transform: translateY(-4%) scale(1.04); } }
+.sa-aplaudir .stk-body { animation: stk-bob 0.9s ease-in-out infinite; }
+.sa-aplaudir .p-hand-left { animation: stk-clap-left 0.9s ease-in-out infinite; }
+.sa-aplaudir .p-hand-right { animation: stk-clap-right 0.9s ease-in-out infinite; }
+
+/* ---- Fire: a breath, a lean, then three flames from the mouth ---- */
+@keyframes stk-fire-body { 0%, 22%, 100% { transform: translateY(0) rotate(0) scale(1); } 10% { transform: translateY(4%) rotate(4deg) scale(0.97); } 38% { transform: translateY(-3%) rotate(-8deg) scale(1.07); } }
+@keyframes stk-flame { 0%, 30% { opacity: 0; transform: translate(0, 0) scale(0.4); } 45% { opacity: 1; } 88%, 100% { opacity: 0; transform: translate(var(--fx), var(--fy)) scale(1.3); } }
+.sa-fuego .stk-body { animation: stk-fire-body 2s ease-in-out infinite; }
+.sa-fuego .p-flame { animation: stk-flame 2s ease-out infinite; }
+.sa-fuego .p-flame:nth-of-type(2) { animation-delay: 0.06s; }
+.sa-fuego .p-flame:nth-of-type(3) { animation-delay: 0.12s; }
+
+/* ---- Crying: head down, shoulders trembling, tears falling ---- */
+@keyframes stk-cry-body { 0%, 100% { transform: translateY(0) rotate(2deg) translateX(0); } 20% { transform: translateY(3%) rotate(5deg) translateX(-1.5%); } 40% { transform: translateY(2%) rotate(2deg) translateX(1.5%); } 60% { transform: translateY(4%) rotate(5deg) translateX(-1.5%); } 80% { transform: translateY(2%) rotate(3deg) translateX(1.5%); } }
+@keyframes stk-tear { 0%, 18% { opacity: 0; transform: translateY(0) scale(0.7); } 35% { opacity: 1; } 100% { opacity: 0; transform: translateY(120%) scale(0.9); } }
+.sa-llorar .stk-body, .sa-triste .stk-body { animation: stk-cry-body 2.3s ease-in-out infinite; }
+.sa-triste .stk-body { animation-duration: 3s; }
+.sa-llorar .p-tear, .sa-triste .p-tear { animation: stk-tear 2.3s linear infinite; }
+.sa-triste .p-tear { animation-duration: 3s; }
+.sa-llorar .p-tear:nth-of-type(2) { animation-delay: 0.45s; }
+.sa-llorar .p-tear:nth-of-type(3) { animation-delay: 0.9s; }
+
+/* ---- Mockery: rocking with a JA JA JA bubble ---- */
+@keyframes stk-rock { 0%, 100% { transform: translateX(-4%) rotate(-4deg); } 50% { transform: translateX(4%) rotate(4deg); } }
+@keyframes stk-bubble { 0%, 8% { opacity: 0; transform: scale(0.6) translateY(6%); } 22%, 82% { opacity: 1; transform: scale(1) translateY(0); } 100% { opacity: 0; transform: scale(1.05) translateY(-4%); } }
+.sa-burla .stk-body { animation: stk-rock 1.5s ease-in-out infinite; }
+.sa-burla .p-bubble { animation: stk-bubble 1.5s ease-out infinite; }
+
+/* ---- Coins: the bag opens and the coins rain down ---- */
+@keyframes stk-bag { 0%, 12% { opacity: 0; transform: translateY(10%) scale(0.7); } 30%, 80% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-6%) scale(1.05); } }
+@keyframes stk-coin { 0%, 28% { opacity: 0; transform: translateY(0) rotate(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(150%) rotate(320deg); } }
+.sa-monedas .stk-body { animation: stk-bob 2.1s ease-in-out infinite; }
+.sa-monedas .p-bag { animation: stk-bag 2.1s ease-out infinite; }
+.sa-monedas .p-coin { animation: stk-coin 2.1s linear infinite; }
+.sa-monedas .p-coin:nth-of-type(2) { animation-delay: 0.2s; }
+.sa-monedas .p-coin:nth-of-type(3) { animation-delay: 0.4s; }
+.sa-monedas .p-coin:nth-of-type(4) { animation-delay: 0.6s; }
+.sa-monedas .p-coin:nth-of-type(5) { animation-delay: 0.8s; }
+
+/* ---- Dancing: arms, legs and tail in one loop ---- */
+@keyframes stk-dance { 0%, 100% { transform: rotate(-9deg) translateY(0) scale(1); } 25% { transform: rotate(0) translateY(-7%) scale(1.05); } 50% { transform: rotate(9deg) translateY(0) scale(1); } 75% { transform: rotate(0) translateY(-7%) scale(1.05); } }
+@keyframes stk-note { 0% { opacity: 0; transform: translateY(20%); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-140%) translateX(var(--nx, 10%)); } }
+.sa-bailar .stk-body { animation: stk-dance 1.6s ease-in-out infinite; }
+.sa-bailar .p-note { animation: stk-note 1.6s ease-out infinite; }
+.sa-bailar .p-note:nth-of-type(2) { animation-delay: 0.5s; }
+.sa-bailar .p-note:nth-of-type(3) { animation-delay: 1s; }
+
+/* ---- Angry hat: stomps, the hat is thrown, and it comes back ---- */
+@keyframes stk-stomp { 0% { transform: translateY(0) rotate(0); } 12% { transform: translateY(-5%) rotate(3deg); } 18% { transform: translateY(2%) rotate(-3deg); } 26% { transform: translateY(-5%) rotate(4deg); } 32% { transform: translateY(2%) rotate(-4deg); } 45%, 100% { transform: translateY(0) rotate(0); } }
+@keyframes stk-hat { 0%, 34% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1); } 44% { opacity: 1; transform: translate(50%, -55%) rotate(260deg) scale(0.95); } 62% { opacity: 0; transform: translate(110%, -30%) rotate(720deg) scale(0.75); } 78% { opacity: 0; transform: translate(110%, -30%) rotate(720deg) scale(0.75); } 88%, 100% { opacity: 1; transform: translate(0, 0) rotate(720deg) scale(1); } }
+@keyframes stk-anger { 0%, 26%, 40%, 100% { opacity: 0; transform: scale(0.7); } 10%, 32% { opacity: 1; transform: scale(1.15); } }
+.sa-sombrero-enojado .stk-body { animation: stk-stomp 2.4s ease-in-out infinite; }
+.sa-sombrero-enojado .p-hat { animation: stk-hat 2.4s ease-in-out infinite; }
+.sa-sombrero-enojado .p-anger { animation: stk-anger 2.4s ease-in-out infinite; }
+
+/* ---- Thinking: tilted head with a Hmm...? bubble ---- */
+@keyframes stk-think { 0%, 100% { transform: rotate(0); } 35%, 75% { transform: rotate(7deg); } }
+.sa-pensando .stk-body { animation: stk-think 2.6s ease-in-out infinite; }
+.sa-pensando .p-bubble { animation: stk-bubble 2.6s ease-out infinite; }
+
+/* ---- Cards: both hands hold a sign, each with its own sway ---- */
+@keyframes stk-card-welcome { 0%, 100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(3deg) translateY(-3%); } }
+@keyframes stk-card-nomoney { 0%, 100% { transform: rotate(-3deg) translateX(-2%); } 25%, 75% { transform: rotate(3deg) translateX(2%); } }
+@keyframes stk-card-poor { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(5%) rotate(-2deg); } }
+@keyframes stk-card-latino { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.07) rotate(-2deg); } }
+.sa-cartel-bienvenido .stk-body { animation: stk-card-welcome 2.2s ease-in-out infinite; }
+.sa-cartel-nomoney .stk-body { animation: stk-card-nomoney 1.3s ease-in-out infinite; }
+.sa-cartel-soypobre .stk-body { animation: stk-card-poor 2.8s ease-in-out infinite; }
+.sa-cartel-latino .stk-body { animation: stk-card-latino 1.2s ease-in-out infinite; }
+
+.stk-sign {
+  position: absolute;
+  left: 9%;
+  width: 82%;
+  top: 52%;
+  padding: 3% 2%;
+  border-radius: calc(var(--s) * 0.07);
+  background: #fff6e2;
+  border: max(1px, calc(var(--s) * 0.016)) solid rgba(90, 50, 15, 0.5);
+  color: #3a2410;
+  font-weight: 800;
+  font-size: calc(var(--s) * 0.088);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+/* ---- Ranking frames: the strip of twelve pictures plays as a film ---- */
+@keyframes rank-play { from { background-position: 0 0; } to { background-position: 100% 0; } }
+.rank-frame {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.rank-frame .rank-strip {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 1200% 100%;
+  animation: rank-play 1.08s steps(11, end) infinite;
+}
+.rank-frame img.rank-photo {
+  position: absolute;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stk-body, .stk-emoji, .rank-frame img.rank-strip { animation: none !important; }
+}
+
+/* ---- A sticker crossing the room ---- */
+.flight {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  pointer-events: none;
+  will-change: transform;
+}
+@keyframes flight-x {
+  0% { transform: translate(var(--fx), var(--fy)) scale(0.42); opacity: 0; }
+  8% { opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 1; }
+}
+@keyframes flight-arc {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(var(--arc) * -1)); }
+}
+.flight-outer { animation: flight-x var(--dur) cubic-bezier(0.22, 0.9, 0.3, 1) forwards; }
+.flight-inner { animation: flight-arc var(--dur) ease-out; }
+
+@keyframes burst-out {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--bx), var(--by)) scale(0.9) rotate(var(--br)); }
+}
+.burst-spark {
+  position: fixed;
+  z-index: 59;
+  pointer-events: none;
+  animation: burst-out 0.95s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+  font-size: var(--e, 20px);
+  line-height: 1;
+}
+@keyframes burst-ring {
+  0% { opacity: 0.85; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+}
+.burst-ring {
+  position: fixed;
+  z-index: 58;
+  pointer-events: none;
+  border-radius: 9999px;
+  border: 2px solid var(--ring-color, #ffd873);
+  animation: burst-ring 0.9s ease-out forwards;
+}
+@keyframes shout-up {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.7); }
+  20%, 70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -90px) scale(1.05); }
+}
+.shout {
+  position: fixed;
+  z-index: 61;
+  pointer-events: none;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff6e2;
+  animation: shout-up 1.5s ease-out forwards;
+  text-shadow: 0 0 12px rgba(255, 190, 90, 0.9), 0 2px 4px rgba(0, 0, 0, 0.6);
+}

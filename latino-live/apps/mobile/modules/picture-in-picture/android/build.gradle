@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+apply plugin: 'expo-module-gradle-plugin'
+
+group = 'ai.exaspark.pip'
+version = '1.0.0'
+
+android {
+  namespace "ai.exaspark.pip"
+
+  defaultConfig {
+    versionCode 1
+    versionName "1.0.0"
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  // OnUserLeaveHintProvider (androidx.core): el aviso de que la persona dejó
+  // la app a propósito (Inicio o recientes) sin confundirlo con abrir la
+  // galería, y sin tocar la pantalla principal generada.
+  implementation "androidx.core:core:1.17.0"
+}

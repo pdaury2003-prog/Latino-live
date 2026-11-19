@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+apps/web/public/descargas/latino-live-codigo-completo.zip
+# Paquetes de exportación del repositorio (zip y bundle de git).
+exports/

@@ -1,0 +1,80 @@
+{
+  "expo": {
+    "name": "Latino Live",
+    "slug": "sahar",
+    "version": "1.0.0",
+    "scheme": "ai.exaspark.app",
+    "icon": "./assets/icon.png",
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0A0908"
+      },
+      "package": "com.latinolivechat.app",
+      "versionCode": 1,
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.latinolivechat.app",
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Latino Live usa el micrófono para que puedas hablar en la sala de voz.",
+        "NSPhotoLibraryUsageDescription": "Latino Live usa tus fotos para tu perfil, los momentos y el chat de la sala.",
+        "NSCameraUsageDescription": "Latino Live usa la cámara para que puedas mostrar tu video en la sala.",
+        "NSPhotoLibraryAddUsageDescription": "Latino Live guarda las fotos que compartes en la sala."
+      }
+    },
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#141210",
+    "web": {
+      "output": "single",
+      "bundler": "metro",
+      "lang": "es",
+      "themeColor": "#0A0908",
+      "backgroundColor": "#0A0908"
+    },
+    "plugins": [
+      "expo-router",
+      "./plugins/with-dragon-overlay",
+      "./plugins/with-picture-in-picture",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand-logo.png",
+          "backgroundColor": "#141210",
+          "imageWidth": 160,
+          "resizeMode": "contain"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Latino Live usa tus fotos para tu perfil, los momentos y el chat de la sala."
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Latino Live usa el micrófono para que puedas hablar en la sala de voz.",
+          "recordAudioAndroid": true
+        }
+      ],
+      "@config-plugins/react-native-webrtc",
+      "expo-iap",
+      [
+        "expo-notifications",
+        {
+          "color": "#E8C27E",
+          "defaultChannel": "sahar-avisos"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

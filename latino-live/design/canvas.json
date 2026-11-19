@@ -1,0 +1,17 @@
+{
+  "v": 3,
+  "title": "",
+  "pages": [
+    {
+      "id": "page-4db74569",
+      "name": "Salas"
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-4db74569"
+  },
+  "boards": {},
+  "order": [],
+  "notes": {}
+}

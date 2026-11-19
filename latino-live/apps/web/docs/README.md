@@ -1,0 +1,61 @@
+# Component references
+
+Read `design-rules.md` before changing visual composition. Installed source is
+the authority for the exact API. The mobile source is React Native Reusables
+with Maia tokens and phone control sizes; the website uses official radix-maia.
+
+- [accordion](https://ui.shadcn.com/docs/components/accordion): `components/ui/accordion.tsx`
+- [alert-dialog](https://ui.shadcn.com/docs/components/alert-dialog): `components/ui/alert-dialog.tsx`
+- [alert](https://ui.shadcn.com/docs/components/alert): `components/ui/alert.tsx`
+- [aspect-ratio](https://ui.shadcn.com/docs/components/aspect-ratio): `components/ui/aspect-ratio.tsx`
+- [avatar](https://ui.shadcn.com/docs/components/avatar): `components/ui/avatar.tsx`
+- [badge](https://ui.shadcn.com/docs/components/badge): `components/ui/badge.tsx`
+- [breadcrumb](https://ui.shadcn.com/docs/components/breadcrumb): `components/ui/breadcrumb.tsx`
+- [button-group](https://ui.shadcn.com/docs/components/button-group): `components/ui/button-group.tsx`
+- [button](https://ui.shadcn.com/docs/components/button): `components/ui/button.tsx`
+- [calendar](https://ui.shadcn.com/docs/components/calendar): `components/ui/calendar.tsx`
+- [card](https://ui.shadcn.com/docs/components/card): `components/ui/card.tsx`
+- [carousel](https://ui.shadcn.com/docs/components/carousel): `components/ui/carousel.tsx`
+- [chart](https://ui.shadcn.com/docs/components/chart): `components/ui/chart.tsx`
+- [checkbox](https://ui.shadcn.com/docs/components/checkbox): `components/ui/checkbox.tsx`
+- [collapsible](https://ui.shadcn.com/docs/components/collapsible): `components/ui/collapsible.tsx`
+- [command](https://ui.shadcn.com/docs/components/command): `components/ui/command.tsx`
+- [context-menu](https://ui.shadcn.com/docs/components/context-menu): `components/ui/context-menu.tsx`
+- [dialog](https://ui.shadcn.com/docs/components/dialog): `components/ui/dialog.tsx`
+- [drawer](https://ui.shadcn.com/docs/components/drawer): `components/ui/drawer.tsx`
+- [dropdown-menu](https://ui.shadcn.com/docs/components/dropdown-menu): `components/ui/dropdown-menu.tsx`
+- [empty](https://ui.shadcn.com/docs/components/empty): `components/ui/empty.tsx`
+- [field](https://ui.shadcn.com/docs/components/field): `components/ui/field.tsx`
+- [form](https://ui.shadcn.com/docs/components/form): `components/ui/form.tsx`
+- [hover-card](https://ui.shadcn.com/docs/components/hover-card): `components/ui/hover-card.tsx`
+- [image](https://ui.shadcn.com/docs/components/image): `components/ui/image.tsx`
+- [input-group](https://ui.shadcn.com/docs/components/input-group): `components/ui/input-group.tsx`
+- [input-otp](https://ui.shadcn.com/docs/components/input-otp): `components/ui/input-otp.tsx`
+- [input](https://ui.shadcn.com/docs/components/input): `components/ui/input.tsx`
+- [item](https://ui.shadcn.com/docs/components/item): `components/ui/item.tsx`
+- [kbd](https://ui.shadcn.com/docs/components/kbd): `components/ui/kbd.tsx`
+- [label](https://ui.shadcn.com/docs/components/label): `components/ui/label.tsx`
+- [menubar](https://ui.shadcn.com/docs/components/menubar): `components/ui/menubar.tsx`
+- [native-select](https://ui.shadcn.com/docs/components/native-select): `components/ui/native-select.tsx`
+- [navigation-menu](https://ui.shadcn.com/docs/components/navigation-menu): `components/ui/navigation-menu.tsx`
+- [pagination](https://ui.shadcn.com/docs/components/pagination): `components/ui/pagination.tsx`
+- [popover](https://ui.shadcn.com/docs/components/popover): `components/ui/popover.tsx`
+- [progress](https://ui.shadcn.com/docs/components/progress): `components/ui/progress.tsx`
+- [radio-group](https://ui.shadcn.com/docs/components/radio-group): `components/ui/radio-group.tsx`
+- [resizable](https://ui.shadcn.com/docs/components/resizable): `components/ui/resizable.tsx`
+- [scroll-area](https://ui.shadcn.com/docs/components/scroll-area): `components/ui/scroll-area.tsx`
+- [select](https://ui.shadcn.com/docs/components/select): `components/ui/select.tsx`
+- [separator](https://ui.shadcn.com/docs/components/separator): `components/ui/separator.tsx`
+- [sheet](https://ui.shadcn.com/docs/components/sheet): `components/ui/sheet.tsx`
+- [sidebar](https://ui.shadcn.com/docs/components/sidebar): `components/ui/sidebar.tsx`
+- [skeleton](https://ui.shadcn.com/docs/components/skeleton): `components/ui/skeleton.tsx`
+- [slider](https://ui.shadcn.com/docs/components/slider): `components/ui/slider.tsx`
+- [sonner](https://ui.shadcn.com/docs/components/sonner): `components/ui/sonner.tsx`
+- [spinner](https://ui.shadcn.com/docs/components/spinner): `components/ui/spinner.tsx`
+- [switch](https://ui.shadcn.com/docs/components/switch): `components/ui/switch.tsx`
+- [table](https://ui.shadcn.com/docs/components/table): `components/ui/table.tsx`
+- [tabs](https://ui.shadcn.com/docs/components/tabs): `components/ui/tabs.tsx`
+- [textarea](https://ui.shadcn.com/docs/components/textarea): `components/ui/textarea.tsx`
+- [toggle-group](https://ui.shadcn.com/docs/components/toggle-group): `components/ui/toggle-group.tsx`
+- [toggle](https://ui.shadcn.com/docs/components/toggle): `components/ui/toggle.tsx`
+- [tooltip](https://ui.shadcn.com/docs/components/tooltip): `components/ui/tooltip.tsx`
